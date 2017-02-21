@@ -10,23 +10,32 @@
     <nav>
         <section class='container'>
             <h1>REPLACE ME</h1>
-            <div class="signup">
-                <form action="login" class="log">
-                    <label for="query"></label>
-                    <input type="text" class="js-user" placeholder="Username">
-                    <input type="text" class="js-password" placeholder="Password">
-                    <button type="submit" class="logButton">Login</button>
-                </form>
-                <p class="missing">forgot password?</p>
-                <p class="reg">register</p>
-            </div>
+            <!--<div class="signup">-->
+            <!--    <form class="log" id="log">-->
+            <!--        <label for="query"></label>-->
+            <!--        <input type="text" class="js-user" placeholder="Username">-->
+            <!--        <input type="password" class="js-password" placeholder="Password">-->
+            <!--        <button type="submit" class="logButton">Login</button>-->
+            <!--    </form>-->
+            <!--    <p class="reg">register</p>-->
+            <!--</div>-->
             <div class="leftContainer">
                 <h2>Search for Movies in Theaters Near You</h2>
                 <form action="#" class="js-search-form">
                     <label for="query"></label>
-                    <input type="text" class="js-query" placeholder="Zip Code" value="19193">
-                    <button type="submit">Search</button>
+                    <input type="text" class="js-query" placeholder="Zip Code" value="">
+                    <button type="submit" class="zipSearch">Search</button>
                 </form>
+            </div>
+            <div class="favoritesContainer">
+                <h2>Your Favorites
+                    <button class='clearFavoritesButton'>
+                    <img src='/images/red-close.png' class='clear-favourite-icon'>
+                </button>
+                </h2>
+                <ul>
+
+                </ul>
             </div>
         </section>
     </nav>

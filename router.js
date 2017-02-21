@@ -1,13 +1,11 @@
-var {
-    BasicStrategy
-} = require('passport-http');
+var {BasicStrategy} = require('passport-http');
 var express = require('express');
 var jsonParser = require('body-parser').json();
 var passport = require('passport');
 
 var {
     User
-} = require('./models');
+} = require('./models/users');
 
 var router = express.Router();
 
@@ -15,24 +13,24 @@ router.use(jsonParser);
 
 
 var strategy = new BasicStrategy(
-    (username, password, cb) => {
+    (userName, passwords, cb) => {
         User
             .findOne({
-                username
+                userName
             })
             .exec()
             .then(user => {
                 if (!user) {
                     return cb(null, false, {
-                        message: 'Incorrect username'
+                        message: 'Incorrect userName'
                     });
                 }
-                if (user.password !== password) {
+                if (user.passwords !== passwords) {
                     return cb(null, false, 'Incorrect password');
                 }
                 return cb(null, user);
             })
-            .catch(err => cb(err))
+            .catch(err => cb(err));
     });
 
 passport.use(strategy);
@@ -45,45 +43,47 @@ router.post('/', (req, res) => {
         });
     }
 
-    if (!('username' in req.body)) {
+    if (!('userName' in req.body)) {
         return res.status(422).json({
-            message: 'Missing field: username'
+            message: 'Missing field: userName'
         });
     }
 
     let {
-        username, password, zipCode
+        userName,
+        passwords,
+        zipCode
     } = req.body;
 
-    if (typeof username !== 'string') {
+    if (typeof userName !== 'string') {
         return res.status(422).json({
-            message: 'Incorrect field type: username'
+            message: 'Incorrect field type: userName'
         });
     }
 
-    username = username.trim();
+    userName = userName.trim();
 
-    if (username === '') {
+    if (userName === '') {
         return res.status(422).json({
-            message: 'Incorrect field length: username'
+            message: 'Incorrect field length: userName'
         });
     }
 
-    if (!(password)) {
+    if (!(passwords)) {
         return res.status(422).json({
             message: 'Missing field: password'
         });
     }
 
-    if (typeof password !== 'string') {
+    if (typeof passwords !== 'string') {
         return res.status(422).json({
             message: 'Incorrect field type: password'
         });
     }
 
-    password = password.trim();
+    passwords = passwords.trim();
 
-    if (password === '') {
+    if (passwords === '') {
         return res.status(422).json({
             message: 'Incorrect field length: password'
         });
@@ -91,23 +91,23 @@ router.post('/', (req, res) => {
 
     return User
         .find({
-            username
+            userName
         })
         .count()
         .exec()
         .then(count => {
             if (count > 0) {
                 return res.status(422).json({
-                    message: 'username already taken'
+                    message: 'userName already taken'
                 });
             }
-            return User.hashPassword(password)
+            return User.hashPassword(passwords)
         })
         .then(hash => {
             return User
                 .create({
-                    username: username,
-                    password: hash,
+                    userName: userName,
+                    passwords: hash,
                     zipCode: zipCode
                 })
         })
@@ -122,28 +122,29 @@ router.post('/', (req, res) => {
 });
 
 
-var basicStrategy = new BasicStrategy(function (username, password, callback) {
+var basicStrategy = new BasicStrategy(function(userName, passwords, callback) {
     let user;
     User
         .findOne({
-            username: username
+            userName: userName
         })
         .exec()
         .then(_user => {
             user = _user;
             if (!user) {
                 return callback(null, false, {
-                    message: 'Incorrect username'
+                    message: 'Incorrect userName'
                 });
             }
-            return user.validatePassword(password);
+            return user.validatePassword(passwords);
         })
         .then(isValid => {
             if (!isValid) {
                 return callback(null, false, {
                     message: 'Incorrect password'
                 });
-            } else {
+            }
+            else {
                 return callback(null, user)
             }
         });
@@ -153,7 +154,7 @@ var basicStrategy = new BasicStrategy(function (username, password, callback) {
 passport.use(basicStrategy);
 router.use(passport.initialize());
 
-router.get('/me',
+router.get('/users',
     passport.authenticate('basic', {
         session: false
     }), (req, res) => res.json({

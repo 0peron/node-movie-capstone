@@ -24,7 +24,7 @@ body {
 
 nav {
     width: auto;
-    height: 100px;
+    height: 115px;
     border-bottom: 1px solid grey;
     background: black;
     box-shadow: 0px 0px 10px 2px rgba(0, 0, 0, 0.75);
@@ -34,6 +34,7 @@ nav h1 {
     color: white;
     text-align: center;
     font-size: 35px;
+    margin-bottom: 10px;
 }
 
 nav h2 {
@@ -44,6 +45,16 @@ nav h2 {
 nav .leftContainer {
     float: left;
     margin-left: 15px;
+}
+
+.zipSearch {
+    cursor: pointer;
+    background-color: lightgreen;
+}
+
+.zipSearch:hover {
+    background-color: green;
+    color: white;
 }
 
 nav .js-search-form {
@@ -58,7 +69,15 @@ nav .signup {
     width: 15%;
 }
 
-nav .logButton {}
+nav .logButton {
+    cursor: pointer;
+    background-color: lightgreen;
+}
+
+nav .logButton:hover {
+    background-color: green;
+    color: white;
+}
 
 nav p {
     color: white;
@@ -67,6 +86,52 @@ nav p {
 
 nav p::hover {
     color: blue;
+}
+
+.addToFavoritesButton, .clearFavoritesButton {
+    background-color: transparent !important;
+    border: none;
+    cursor: pointer;
+    display: block;
+    width: auto;
+    float: right;
+    top: 10px;
+    right: 10px;
+    position: absolute;
+    z-index: 1000;
+}
+
+.favoritesContainer {
+    margin-top: 20px;
+    margin-left: 15px;
+    z-index: 10;
+    text-align: left;
+    width: 360px;
+    padding: 15px;
+    border-radius: 15px;
+    color: white;
+    background-color: rgba(0, 0, 0, 0.5);
+    position: fixed;
+    top: 10px;
+    right: 10px;
+}
+
+.favoritesContainer h2 {
+    text-align: left;
+}
+
+.favoritesContainer ul {
+    list-style-type: none;
+    background-color: none;
+}
+
+.clearFavoritesButton {
+    float: right;
+}
+
+.clear-favourite-icon {
+    height: 15px;
+    width: 15px;
 }
 
 .wrapper {
@@ -93,24 +158,42 @@ nav p::hover {
 
 .movieTitle {
     border-bottom: 1px solid lightgreen;
+    margin-bottom: 15px;
 }
 
 .movieContain {
     color: white;
+    position: relative;
 }
 
 .movieTitle h1 {
     color: white;
     font-size: 30px;
+    margin-top: 30px;
 }
 
 .movieTitle p {
     color: white;
 }
 
-.movieTitle .genre {
+.movieTitle .genreValue {
     float: right;
     color: white;
+}
+
+.theater p {
+    margin-top: 10px;
+    color: white;
+}
+
+a {
+    color: lightgreen;
+    text-decoration: none;
+}
+
+a:hover {
+    color: dodgerblue;
+    text-decoration: none;
 }
 
 .overlay {
@@ -149,9 +232,16 @@ nav p::hover {
     margin-bottom: 5px;
 }
 
-.missing:hover,
 .reg:hover {
     color: lightgreen;
+    cursor: pointer;
+}
+
+.add-favourite-icon {
+    height: 15px;
+    width: 15px;
+    background-color: transparent;
+    cursor: pointer;
 }
 
 

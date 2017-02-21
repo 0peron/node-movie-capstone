@@ -1,7 +1,7 @@
 var mongoose = require('mongoose');
-//var bcrypt = require('bcryptjs');
+var bcrypt = require('bcryptjs');
 
-var userSchema = mongoose.Schema({
+var usersSchema = new mongoose.Schema({
     userName: {
         type: String,
         required: true,
@@ -18,31 +18,27 @@ var userSchema = mongoose.Schema({
 
 });
 
-//UserSchema.methods.validatePassword = function (password) {
-//    return bcrypt
-//        .compare(password, this.password)
-//        .then(isValid => isValid);
-//}
-//
-//UserSchema.statics.hashPassword = function (password) {
-//    return bcrypt
-//        .hash(password, 8)
-//        .then(hash => hash);
-//}
-//
-//userSchema.methods.apiRepr = function () {
-//    return {
-//        id: this._id,
-//        userName: this.userName,
-//        password: this.password,
-//        zipCode: this.zipCode
-//    };
-//}
-//
-//};
-
-var Users = mongoose.model('User', userSchema);
-
-module.exports = {
-    Users
+usersSchema.methods.validatePassword = function(password) {
+    return bcrypt
+        .compare(password, this.password)
+        .then(isValid => isValid);
 };
+
+usersSchema.statics.hashPassword = function(password) {
+    return bcrypt
+        .hash(password, 8)
+        .then(hash => hash);
+};
+
+usersSchema.methods.apiRepr = function() {
+    return {
+        id: this._id,
+        userName: this.userName,
+        password: this.password,
+        zipCode: this.zipCode
+    };
+};
+
+var Users = mongoose.model('Users', usersSchema);
+
+module.exports = Users;

@@ -10,29 +10,23 @@
     <nav>
         <section class='container'>
             <h1>REPLACE ME</h1>
-
-            <div class="signup">
-                <form action="login" class="log">
-                    <label for="query"></label>
-                    <input type="text" class="js-user" placeholder="Username">
-                    <input type="text" class="js-password" placeholder="Password">
-                    <button type="submit" class="logButton">Login</button>
-                </form>
-                <p class="missing">forgot password?</p>
-                <p class="reg">register</p>
-            </div>
-            <div class="leftContainer">
-                <h2>Search for Movies in Theaters Near You</h2>
-                <form action="zipTheaters.html" class="js-search-form">
-                    <label for="query"></label>
-                    <input type="text" class="js-query" placeholder="Zip Code" value="19193">
-                    <button type="submit">Search</button>
-                </form>
-            </div>
+            <form method="get" action="zipTheaters.html" class='next'>
+                <button type="submit" class="nextPage">Search for Movies in Theaters Near You</button>
+            </form>
+            <!--<div class="signup">-->
+            <!--    <form action="login" class="log">-->
+            <!--        <label for="query"></label>-->
+            <!--        <input type="text" class="js-user" placeholder="Username">-->
+            <!--        <input type="password" class="js-password" placeholder="Password">-->
+            <!--        <button type="submit" class="logButton">Login</button>-->
+            <!--    </form>-->
+            <!--    <p class="reg">register</p>-->
+            <!--</div>-->
         </section>
     </nav>
     <div class='wrapper'>
         <h1>Official 2017 Movie Trailers</h1>
+
         <div class='trailerList' id='js-movie-trailers'>
             <div class='movieTrailers'>
                 <ul>
@@ -40,9 +34,10 @@
             </div>
         </div>
     </div>
-    <div class="modal_wrapper"></div>
-    <div class="overlay"></div>
-
+    <div class="overlay">
+        <div class="modal_wrapper">
+        </div>
+    </div>
 
     <script src="https://code.jquery.com/jquery-3.1.0.js"></script>
     <script src="trailers.js"></script>

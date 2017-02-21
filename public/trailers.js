@@ -1,26 +1,4 @@
 $(document).ready(function () {
-    //    var q = '2017 official trailers'
-    //    $('.wrapper').hide();
-    //    trailerApiCall(q);
-
-
-    //    function trailerApiCall(trailer) {
-    //
-    //        $.ajax({
-    //                url: "/trailers/" + q,
-    //                type: 'get',
-    //                maxResults: '16',
-    //                dataType: 'json'
-    //            })
-    //            .done(function (res) {
-    //                console.log(res);
-    //                displaySearch(res);
-    //            })
-    //            .fail(function (jqXHR, error, errorThrown) {
-    //                console.log(jqXHR);
-    //                console.log(error);
-    //                console.log(errorThrown);
-    //            });
     $.getJSON("https://www.googleapis.com/youtube/v3/search", {
             part: 'snippet',
             key: 'AIzaSyAb_vpzPd09vDWQAounmUNPVGPj-oLOxQc',
