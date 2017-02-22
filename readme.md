@@ -15,7 +15,7 @@
  
 ##Working Prototype
  
- you can access a working prototype of the app here: --insert website--
+ you can access a working prototype of the app here: https://gentle-lowlands-20810.herokuapp.com/
  
 ##Functionality
  
@@ -42,19 +42,3 @@ This is version 1.0 of the app. I expect to add features such as:
 -adding a user login that can store users inputed zipcode so they dont have to type it in every time.
 -i would also like to add more information about each movie so it could be easily accessable to the user at a glance.
 -adding a location service could help to beable to find movies in the area of where the user is currently located. 
-
-
-to start this app follow these steps:
-
-in command line run
-
- ./run_mongod
- 
- the open the server.js file and click on RUN from the top navigation
- 
- the website is available at this url 
- 
- https://node-movie-capstone-calint.c9users.io/
-
- 
- 
