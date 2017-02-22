@@ -2,7 +2,7 @@
  
  js.node app for the node capstone. This app is working with the OnConnect Data Delivery API from gracenote.
  
- ![screenshot](https://0peron.github.io/node-movie-capstone/images/index.png)
+ ![screenshot](https://0peron.github.io/node-movie-capstone/public/images/index.png)
  
 ##Background
  
@@ -22,14 +22,14 @@
 The app's functionality includes:
 
 -Trailers to upcoming movies to help decide what movie you would want to see.
-![screenshot](https://0peron.github.io/node-movie-capstone/images/index.png)
+![screenshot](https://0peron.github.io/node-movie-capstone/public/images/index.png)
 -searching for movies and theaters in your desired zipcode.
-![screenshot](https://0peron.github.io/node-movie-capstone/images/search.png)
+![screenshot](https://0peron.github.io/node-movie-capstone/public/images/search.png)
 -shows all showtimes for each movie and theater that it is showing.
 -links to movie websites
 -links to fandango ticket services for desired show times.
 -allows you to add movies to favorites for reference on what movies are interested to you.
-![screenshot](https://0peron.github.io/node-movie-capstone/images/favorites.png)
+![screenshot](https://0peron.github.io/node-movie-capstone/public/images/favorites.png)
 
 ##Technical
 
