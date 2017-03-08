@@ -217,10 +217,11 @@
      event.preventDefault();
      //get the value from the input box
      var movieValue = $(this).parent().find('.addToFavoritesMovieValue').val();
+     console.log(movieValue)
 
 
      var nameObject = {
-         'name': movieValue,
+         'name': movieValue
      };
 
      $.ajax({
