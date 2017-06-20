@@ -5,6 +5,14 @@ var movieSchema = new mongoose.Schema({
     name: {
         type: String,
         required: true
+    },
+    idValue: {
+        type: String,
+        required: false
+    },
+    link: {
+        type: String,
+        required: false
     }
 
 });

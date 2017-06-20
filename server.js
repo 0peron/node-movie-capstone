@@ -47,7 +47,7 @@ if (require.main === module) {
             console.error(err);
         }
     });
-};
+}
 
 var getMoviesApi = function(zipcode) {
     console.log(zipcode);
@@ -71,7 +71,16 @@ app.get('/movies/:zip', function(req, res) {
     var userzip = getMoviesApi(req.params.zip);
 
     userzip.on('end', function(movie) {
-        if (movie.length != 0) {
+        if (typeof movie == undefined) {
+            res.sendStatus(404);
+        }
+        else if (!movie) {
+            res.sendStatus(404);
+        }
+        else if (movie.length == 0) {
+            res.sendStatus(404);
+        }
+        else {
             res.json(movie);
         }
     });
@@ -201,8 +210,8 @@ app.get('/populate-favorites', function(req, res) {
 });
 
 app.post('/add-to-favorites', function(req, res) {
-    console.log(req.body.name);
-    var requiredFields = ['name'];
+    console.log(req.body.name, req.body.idValue);
+    var requiredFields = ['name', 'link'];
     for (var i = 0; i < requiredFields.length; i++) {
         var field = requiredFields[i];
         if (!(field in req.body)) {
@@ -213,7 +222,9 @@ app.post('/add-to-favorites', function(req, res) {
     }
 
     Movie.create({
-        name: req.body.name
+        name: req.body.name,
+        link: req.body.link,
+        idValue: req.body.idValue
     }, function(err, user) {
         if (err) {
             return res.status(500).json({
@@ -226,13 +237,19 @@ app.post('/add-to-favorites', function(req, res) {
 });
 
 app.delete('/delete-favorites', function(req, res) {
-    Movie.remove(req.params.id, function(err, movie) {
-        if (err)
+    console.log(req.body.idValue);
+    Movie.find(function(err, movie) {
+        if (err) {
             return res.status(404).json({
-                message: 'Item not found.'
+                message: 'item not found.'
             });
-
-        res.status(200).json(movie);
+        }
+        Movie.remove({
+            idValue: req.body.idValue
+        },
+        function(){
+            res.status(201).json(movie);
+        });
     });
 });
 

@@ -23,11 +23,13 @@ body {
 }
 
 nav {
-    width: auto;
-    height: 115px;
+    width: 100%;
     border-bottom: 1px solid grey;
     background: black;
     box-shadow: 0px 0px 10px 2px rgba(0, 0, 0, 0.75);
+    position: fixed;
+    top: 0;
+    z-index: 10;
 }
 
 nav h1 {
@@ -88,7 +90,18 @@ nav p::hover {
     color: blue;
 }
 
-.addToFavoritesButton, .clearFavoritesButton {
+.container {
+    padding-bottom: 45px;
+    padding-top: 10px;
+}
+
+.errorMessage {
+    color: red;
+    text-align: center;
+}
+
+.addToFavoritesButton,
+.clearFavoritesButton {
     background-color: transparent !important;
     border: none;
     cursor: pointer;
@@ -98,31 +111,59 @@ nav p::hover {
     top: 10px;
     right: 10px;
     position: absolute;
-    z-index: 1000;
+}
+
+.addToFavoritesButton p {
+    background-color: #1E3888;
+    color: white;
+    padding: 16px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+}
+
+.dropbtn {
+    background-color: #1E3888;
+    color: white;
+    padding: 16px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+}
+
+.dropbtn:hover,
+.dropbtn:focus {
+    background-color: #3e8e41;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.dropdown-content a:hover {
+    background-color: #f1f1f1
 }
 
 .favoritesContainer {
-    margin-top: 20px;
-    margin-left: 15px;
-    z-index: 10;
-    text-align: left;
-    width: 360px;
-    padding: 15px;
-    border-radius: 15px;
-    color: white;
-    background-color: rgba(0, 0, 0, 0.5);
-    position: fixed;
-    top: 10px;
-    right: 10px;
-}
-
-.favoritesContainer h2 {
-    text-align: left;
-}
-
-.favoritesContainer ul {
-    list-style-type: none;
-    background-color: none;
+    float: right;
+    margin-bottom: 20px;
+    margin-right: 30px;
 }
 
 .clearFavoritesButton {
@@ -134,9 +175,13 @@ nav p::hover {
     width: 15px;
 }
 
+.anchor {
+    position: relative;
+    top: -300px;
+}
 .wrapper {
     background: black;
-    margin-top: 2rem;
+    margin-top: 10rem;
     margin-left: auto;
     margin-right: auto;
     max-width: 1000px;
@@ -149,6 +194,39 @@ nav p::hover {
     overflow: hidden;
     margin-top: 1em;
     /*    list-style-type: none;*/
+}
+
+.accordion {
+    background-color: #eee;
+    color: #444;
+    cursor: pointer;
+    padding: 18px;
+    width: 100%;
+    text-align: left;
+    border: none;
+    outline: none;
+    transition: 0.4s;
+}
+
+.accordion:active, .accordion:hover {
+    background-color: #ddd;
+}
+
+.accordion:after {
+    content: '+'; /* Unicode character for "plus" sign (+) */
+    font-size: 13px;
+    color: #777;
+    float: right;
+    margin-left: 5px;
+}
+
+.accordion:active:after {
+    content: "-"; /* Unicode character for "minus" sign (-) */
+}
+.panel {
+  	display: none;
+	padding: 20px;
+	overflow: auto;
 }
 
 .zipcode {
@@ -202,7 +280,6 @@ a:hover {
     left: 0;
     height: 100%;
     width: 100%;
-    z-index: 10;
     background-color: rgba(0, 0, 0, 0.5);
 }
 
@@ -217,7 +294,6 @@ a:hover {
     margin-left: -150px;
     background-color: lightgreen;
     border-radius: 5px;
-    z-index: 11;
     text-align: center;
     padding: 30px;
     position: relative;
@@ -244,12 +320,21 @@ a:hover {
     cursor: pointer;
 }
 
-
-/*
-    @media only screen and (min-width: 640px) {
+@media only screen and (max-width: 800px) {
     .movieTitle {
         width: 48%;
         float: left;
         clear: both;
     }
-*/
+    .favoritesContainer {
+        margin-top: 40px;
+        margin-left: 15px;
+        text-align: left;
+        width: 100%;
+        padding: 15px;
+        border-radius: 15px;
+        color: white;
+        background-color: rgba(0, 0, 0, 0.5);
+        position: relative;
+    }
+}

@@ -1,4 +1,5 @@
 $(document).ready(function () {
+    $('.overlay').hide();
     $.getJSON("https://www.googleapis.com/youtube/v3/search", {
             part: 'snippet',
             key: 'AIzaSyAb_vpzPd09vDWQAounmUNPVGPj-oLOxQc',
@@ -24,9 +25,7 @@ $(document).ready(function () {
         $.each(videosArray, function (videoArrayKey, videoArrayValue) {
             addHTML += "<li>";
             addHTML += "<p>" + videoArrayValue.snippet.title + "</p>";
-            addHTML += "<a href='https://www.youtube.com/watch?v=" + videoArrayValue.id.videoId + "' target='_blank'>";
-            addHTML += "<img src='" + videoArrayValue.snippet.thumbnails.medium.url + "'/>";
-            addHTML += "</a>";
+            addHTML += "<iframe src='https://www.youtube.com/embed/" + videoArrayValue.id.videoId + "?rel=0&showinfo=0' width='434' height='315' frameborder='0' allowfullscreen></iframe>";
             addHTML += "</li>";
         });
         $('.movieTrailers ul').html(addHTML);
