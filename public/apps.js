@@ -180,6 +180,7 @@ window.onload = movieApiCall(19139);
      $('.overlay').hide();
      $('.wrapper').hide();
      $('.errorMessage').hide();
+     $('.wrapper').show();
      zipCode = $('.js-query').val();
 
      $('.js-search-form').submit(function(event) {

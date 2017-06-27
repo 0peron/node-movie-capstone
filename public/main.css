@@ -100,9 +100,7 @@ nav p::hover {
     text-align: center;
 }
 
-.addToFavoritesButton,
-.clearFavoritesButton {
-    background-color: transparent !important;
+.addToFavoritesButton {
     border: none;
     cursor: pointer;
     display: block;
@@ -111,15 +109,10 @@ nav p::hover {
     top: 10px;
     right: 10px;
     position: absolute;
-}
-
-.addToFavoritesButton p {
     background-color: #1E3888;
     color: white;
     padding: 16px;
     font-size: 16px;
-    border: none;
-    cursor: pointer;
 }
 
 .dropbtn {
@@ -166,13 +159,20 @@ nav p::hover {
     margin-right: 30px;
 }
 
-.clearFavoritesButton {
-    float: right;
-}
-
 .clear-favourite-icon {
     height: 15px;
     width: 15px;
+}
+
+.clearFavoritesButton {
+    background-color: transparent !important;
+    border: none;
+    cursor: pointer;
+    display: block;
+    width: auto;
+    float: right;
+    top: 10px;
+    position: absolute;
 }
 
 .anchor {
@@ -197,8 +197,8 @@ nav p::hover {
 }
 
 .accordion {
-    background-color: #eee;
-    color: #444;
+    background-color: black;
+    color: white;
     cursor: pointer;
     padding: 18px;
     width: 100%;
@@ -209,7 +209,8 @@ nav p::hover {
 }
 
 .accordion:active, .accordion:hover {
-    background-color: #ddd;
+    background-color: lightgreen;
+    color: black;
 }
 
 .accordion:after {
