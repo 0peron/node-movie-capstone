@@ -92,6 +92,37 @@ nav .logButton:hover {
     color: white;
 }
 
+.landing {
+    background: black;
+    margin-top: 2rem;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 1000px;
+    padding: 25px;
+    border-radius: 15px;
+    box-shadow: 0px 0px 10px 2px rgba(0, 0, 0, 0.75);
+}
+
+.landing .hide {
+    float: right;
+    color: lightgrey;
+    cursor: pointer;
+}
+
+.landing h1 {
+    color: lightgreen;
+    text-align: center;
+    padding: 5px;
+    font-size: 120%
+}
+
+.landing p {
+    color: white;
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+
 .wrapper {
     background: black;
     margin-top: 2rem;
@@ -104,7 +135,7 @@ nav .logButton:hover {
 }
 
 .wrapper h1 {
-    color: white;
+    color: lightgreen;
     text-align: center;
 }
 

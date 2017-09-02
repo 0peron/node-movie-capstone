@@ -1,4 +1,4 @@
-$(document).ready(function () {
+$(document).ready(function() {
     $('.overlay').hide();
     $.getJSON("https://www.googleapis.com/youtube/v3/search", {
             part: 'snippet',
@@ -7,22 +7,25 @@ $(document).ready(function () {
             type: 'video',
             maxResults: '16'
         },
-        function (apiData) {
+        function(apiData) {
             console.log(apiData);
             if (apiData.pageInfo.totalResults == 0) {
                 addHTML += '<p>No Results</p>';
                 $('.js-search-results').html(addHTML);
-            } else {
+            }
+            else {
                 displaySearch(apiData.items);
             }
             $('.js-search-results').show();
         });
-
+    $('.hide').on('click', function() {
+        $('.landing').hide();
+    });
 
     function displaySearch(videosArray) {
         var addHTML = "";
         $('.wrapper').show();
-        $.each(videosArray, function (videoArrayKey, videoArrayValue) {
+        $.each(videosArray, function(videoArrayKey, videoArrayValue) {
             addHTML += "<li>";
             addHTML += "<p>" + videoArrayValue.snippet.title + "</p>";
             addHTML += "<iframe src='https://www.youtube.com/embed/" + videoArrayValue.id.videoId + "?rel=0&showinfo=0' width='434' height='315' frameborder='0' allowfullscreen></iframe>";
