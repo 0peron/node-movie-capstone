@@ -57,7 +57,7 @@ window.onload = movieApiCall(19139);
 
             //   console.log(showtimeValue.ticketURI);
 
-             if ((showtimeValue.ticketURI != '') || (showtimeValue.ticketURI != null) || (showtimeValue.ticketURI != 'undefined') || (typeof showtimeValue.ticketURI != 'undefined')) {
+             if (typeof showtimeValue.ticketURI != 'undefined') {
                  addHTML += "<a href='" + showtimeValue.ticketURI + "' target='_blank'>" + showtimeValue.dateTime + "</a>";
                  addHTML += "</div>";
                  addHTML += "</div>";
