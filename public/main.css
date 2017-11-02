@@ -177,8 +177,14 @@ nav p::hover {
 
 .anchor {
     position: relative;
-    top: -300px;
+    top: -125px;
+    color: transparent;
 }
+
+.anchor:hover{
+    color: transparent;
+}
+
 .wrapper {
     background: black;
     margin-top: 10rem;

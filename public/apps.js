@@ -30,15 +30,15 @@ window.onload = movieApiCall(19139);
          addHTML += "<div class='movieContain'>";
          addHTML += "<form class='addMovieToFavorites'>";
          addHTML += "<input type='hidden' class='addToFavoritesMovieValue' value='" + movie.title + "'>";
-         addHTML += "<input type='hidden' class='addToFavoritesLinkValue' value='#" + movie.title + "'>";
+         addHTML += "<input type='hidden' class='addToFavoritesLinkValue' value='" + movie.title + "'>";
          addHTML += "<input type='hidden' class='addToFavoritesIdValue' value='" + movie.rootId + "'>";
          addHTML += "<button class='addToFavoritesButton' type='submit'>";
          addHTML += "<p>Add Favorite</p>";
          addHTML += "</button>";
          addHTML += "</form>";
          addHTML += "<div class='movieTitle'>";
-         addHTML += "<a class='anchor'></a>";
-         addHTML += "<h1 id=\"" + movie.title + "\"><a href='" + movie.officialUrl + "' target='_blank'>" + movie.title + "</a></h1>";
+         addHTML += "<a id=\"" + movie.title + "\" class='anchor'>.</a>";
+         addHTML += "<h1 class=\"" + movie.title + "\"><a href='" + movie.officialUrl + "' target='_blank'>" + movie.title + "</a></h1>";
 
          $.each(movie.ratings, function(ratingInxed, ratingValue) {
              addHTML += "<p>" + ratingValue.code + '</p>';
@@ -55,9 +55,9 @@ window.onload = movieApiCall(19139);
              addHTML += "<button class='accordion'>" + showtimeValue.theatre.name + "</button>";
              addHTML += "<div class='panel'>";
 
-             //  console.log(showtimeValue.ticketURI);
+            //   console.log(showtimeValue.ticketURI);
 
-             if ((showtimeValue.ticketURI != '') || (showtimeValue.ticketURI != null) || (showtimeValue.ticketURI = 'undefined') || (typeof showtimeValue.ticketURI != 'undefined') || (showtimeValue.ticketURI)) {
+             if ((showtimeValue.ticketURI != '') || (showtimeValue.ticketURI != null) || (showtimeValue.ticketURI != 'undefined') || (typeof showtimeValue.ticketURI != 'undefined')) {
                  addHTML += "<a href='" + showtimeValue.ticketURI + "' target='_blank'>" + showtimeValue.dateTime + "</a>";
                  addHTML += "</div>";
                  addHTML += "</div>";
@@ -105,7 +105,7 @@ window.onload = movieApiCall(19139);
                  addHTML += "<button class='clearFavoritesButton'>";
                  addHTML += "<img src='/images/red-close.png' class='clear-favourite-icon'>";
                  addHTML += '</button>';
-                 addHTML += "<a href='" + movie.link + "'>" + movie.name + "</a>";
+                 addHTML += "<a href='#" + movie.link + "'>" + movie.name + "</a>";
                  addHTML += "<input type='hidden' class='deleteIdValue' value='" + movie.idValue + "'>";
                  addHTML += "</h2>";
                  addHTML += "</li>";
@@ -121,60 +121,6 @@ window.onload = movieApiCall(19139);
              $('.errorMessage p').text("Opps there was an error handeling your request.")
          });
  }
-
-
-
-
- //  function usersApiCall(userName, password, zipCode) {
- //      var params = {
- //          'userName': userName,
- //          'password': password,
- //          'zipCode': zipCode,
- //      };
- //      $.ajax({
- //              url: "/users",
- //              type: 'POST',
- //              data: params,
- //              dataType: 'json'
- //          })
- //          .done(function(result) {
- //              console.log(result);
- //              displayQuery(result);
- //          })
- //          .fail(function(jqXHR, error, errorThrown) {
- //              console.log(jqXHR);
- //              console.log(error);
- //              console.log(errorThrown);
- //              $('.errorMessage').show();
- //              $('.errorMessage p').text("Opps there was an error handeling your request.")
- //          });
- //  }
-
- //  function login(userName, password) {
- //      var params = {
- //          'userName': userName,
- //          'password': password,
- //          'zipCode': zipCode,
- //      };
-
- //      $.ajax({
- //              url: "/login",
- //              type: 'POST',
- //              data: params,
- //              dataType: 'json'
- //          })
- //          .done(function(result) {
- //              console.log(result);
- //              displayQuery(result);
- //          })
- //          .fail(function(jqXHR, error, errorThrown) {
- //              console.log(jqXHR);
- //              console.log(error);
- //              console.log(errorThrown);
- //              $('.errorMessage').show();
- //              $('.errorMessage p').text("Opps there was an error handeling your request.")
- //          });
- //  }
 
  $(document).ready(function() {
      $('.overlay').hide();
@@ -192,54 +138,6 @@ window.onload = movieApiCall(19139);
          $('.wrapper').show();
      });
  });
-
- //  $('.reg').click(function(event) {
- //      var addHTML = "";
- //      var hidemodalClickFunction = '$(".overlay").hide()';
- //      addHTML += "<div class='modal'>";
- //      addHTML += "<p>Register</p>";
- //      addHTML += '<form class="create" id="create">';
- //      addHTML += '<label for="query"></label>';
- //      addHTML += '<input type="text" class="js-userReg" placeholder="Username">';
- //      addHTML += '<input type="password" class="js-passwordReg" placeholder="Password">';
- //      addHTML += '<input type="text" class="js-zipcodeReg" placeholder="zipcode">';
- //      addHTML += '<button type="submit" class="logButton" onclick=' + hidemodalClickFunction + '>Submit</button>';
- //      addHTML += "</form>";
- //      addHTML += "</div>";
- //      $('.modal_wrapper').html(addHTML);
- //      $('.overlay').show();
- //  });
-
- //  $('.modal_wrapper').on('click', function(e) {
- //      var target = e.target;
-
- //      if ($(target).is('.modal_wrapper')) {
- //          $('.overlay').fadeOut();
- //      }
- //  });
-
- //  $('#create').submit(function(event) {
- //      event.preventDefault;
- //      $('.overlay').fadeOut();
- //  });
-
- //  $(document).on("submit", "#create", function(event) {
- //      event.preventDefault();
- //      var userName = $(".js-userReg").val();
- //      var passwords = $(".js-passwordReg").val();
- //      zipCode = $(".js-zipcodeReg").val();
- //      console.log(userName, passwords, zipCode);
- //      usersApiCall(userName, passwords, zipCode);
- //      movieApiCall(zipCode);
- //  });
-
- //  $(document).on('submit', "#log", function(event) {
- //      event.preventDefault();
- //      var userName = $('.js-user').val();
- //      var password = $(".js-password").val();
- //      // console.log(userName, password);
- //      login(userName, password);
- //  });
 
  $(document).on('click', '.addToFavoritesButton', function(event) {
      //if the page refreshes when you submit the form use "preventDefault()" to force JavaScript to handle the form submission
